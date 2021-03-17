@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfApp_8puzzles.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_8puzzles"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d" FontSize="30" ResizeMode="CanMinimize"
+        Title="15 Puzzles" Width="1000" Height="900">
+    <StackPanel  HorizontalAlignment="Center" Margin="10 10" Orientation="Horizontal">
+        <local:UserControl_Puzzles x:Name="MainPuzzles" Width="600" Height="600" VerticalAlignment="Top" Margin="10 5"/>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="初始狀態: "/>
+            <local:UserControl_Puzzles x:Name="Puzzles_First" Width="240" Height="240" VerticalAlignment="Top"/>
+
+            <Button Name="Button_SetData" 
+                    Content="使用當前狀態" Click="Button_SetData_Click" Margin="10 0"/>
+            <TextBlock Text="目標狀態: "/>
+            <local:UserControl_Puzzles x:Name="Puzzles_End" Width="240" Height="240" VerticalAlignment="Top"/>
+
+            <Button Content="搜尋" Name="Button_BFSSearch" Margin="10 5"
+                    Click="Button_BFSSearch_Click"/>
+            <Button Content="解答" Name="Button_Play" Click="Button_Play_Click"  Margin="10 0"/>
+            <TextBlock>
+                <TextBlock Text="搜尋時間:" Width="200"/>
+                <TextBlock Name="TextBlock_TimeCost"   />
+                <TextBlock Text="ms"/>
+            </TextBlock>
+            <TextBlock Margin="0 10">
+                <TextBlock Text="解花費(深度):" Width="200"/>
+                <TextBlock Name="TextBlock_Cost" />
+            </TextBlock>
+            <TextBlock>
+                <TextBlock Text="已搜尋:" Width="200"/>
+                <TextBlock Name="TextBlock_Degree"/>
+            </TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Window>
